@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="app_bg">#081018</color>
+    <color name="surface">#101922</color>
+    <color name="surface_alt">#142231</color>
+    <color name="line">#22384D</color>
+    <color name="primary">#64C6FF</color>
+    <color name="primary_soft">#9AF0D6</color>
+    <color name="text_main">#EDF3FB</color>
+    <color name="text_muted">#94A8C0</color>
+    <color name="stress">#FF8C97</color>
+    <color name="control">#64C6FF</color>
+    <color name="success">#91F0B1</color>
+    <color name="warn">#FFCF80</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+</resources>

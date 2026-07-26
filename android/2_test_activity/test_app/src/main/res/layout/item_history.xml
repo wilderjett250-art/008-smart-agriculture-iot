@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_card"
+    android:orientation="vertical"
+    android:padding="14dp">
+
+    <TextView
+        android:id="@+id/tvHistoryTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_main"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvHistoryFirst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/text_muted"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tvHistorySecond"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/text_muted"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tvHistoryThird"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/text_muted"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tvHistoryFourth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/text_muted"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tvHistoryFifth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/text_muted"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tvHistorySixth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/text_muted"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tvHistorySeventh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/text_muted"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tvHistoryEighth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/text_muted"
+        android:textSize="13sp" />
+
+</LinearLayout>
