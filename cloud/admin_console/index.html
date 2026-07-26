@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>菊花实验管理台</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div id="authGate" class="auth-gate">
+    <div class="auth-panel">
+      <div class="auth-kicker">Lab Console</div>
+      <h1>菊花实验管理台</h1>
+      <form id="loginForm" class="auth-form">
+        <label>
+          <span>用户名</span>
+          <input name="username" autocomplete="username" placeholder="请输入用户名" required>
+        </label>
+        <label>
+          <span>密码</span>
+          <input name="password" type="password" autocomplete="current-password" placeholder="请输入密码" required>
+        </label>
+        <button class="primary-btn" type="submit">登录</button>
+      </form>
+
+      <div class="auth-accounts">
+        <div class="account-hint">
+          <span class="hint-label">只读体验</span>
+          <strong>viewer</strong>
+          <em>由部署管理员提供</em>
+        </div>
+      </div>
+
+      <div id="authError" class="auth-error hidden"></div>
+    </div>
+  </div>
+
+  <div id="appRoot" class="app-shell app-hidden">
+    <aside class="side-rail">
+      <div class="brand-block">
+        <div class="brand-kicker">Chrysanthemum Lab</div>
+        <h1>实验管理台</h1>
+      </div>
+
+      <nav class="section-nav">
+        <a href="#overview">概览</a>
+        <a href="#devices">设备</a>
+        <a href="#plants">植株</a>
+        <a href="#bindings">绑定</a>
+        <a href="#exports">导出</a>
+        <a id="userNavLink" href="#users" class="hidden">账号</a>
+      </nav>
+
+      <div class="rail-card">
+        <div class="rail-label">当前账号</div>
+        <div id="currentUserCard" class="user-card">
+          <strong id="currentUserName">未登录</strong>
+          <span id="currentUserRole">-</span>
+        </div>
+      </div>
+
+      <div class="rail-card">
+        <div class="rail-label">系统状态</div>
+        <div id="healthBadge" class="status-pill pending">检查中</div>
+      </div>
+
+      <div class="rail-card">
+        <div class="rail-label">最近刷新</div>
+        <div id="lastSync" class="rail-value">尚未刷新</div>
+      </div>
+
+      <div class="rail-actions">
+        <button id="refreshAllBtn" class="primary-btn" type="button">刷新数据</button>
+        <a class="ghost-btn" href="http://115.29.195.177/" target="_blank" rel="noreferrer">打开监测大屏</a>
+        <button id="logoutBtn" class="ghost-btn" type="button">退出登录</button>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <section id="overview" class="hero-panel reveal">
+        <div class="hero-head">
+          <div>
+            <div class="hero-kicker">Operations</div>
+            <h2>设备、植株、绑定与导出</h2>
+          </div>
+          <div id="editHint" class="permission-chip">只读</div>
+        </div>
+
+        <div id="readonlyBanner" class="readonly-banner hidden">
+          当前账号为只读模式，可查看数据，不可新增或修改。
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric-card"><span>设备总数</span><strong id="overviewDevices">-</strong></div>
+          <div class="metric-card"><span>土壤设备</span><strong id="overviewSoil">-</strong></div>
+          <div class="metric-card"><span>空气设备</span><strong id="overviewAir">-</strong></div>
+          <div class="metric-card"><span>植株总数</span><strong id="overviewPlants">-</strong></div>
+          <div class="metric-card"><span>胁迫组</span><strong id="overviewStress">-</strong></div>
+          <div class="metric-card"><span>对照组</span><strong id="overviewControl">-</strong></div>
+        </div>
+      </section>
+
+      <section id="devices" class="panel reveal">
+        <div class="panel-head">
+          <h3>设备巡检</h3>
+          <div class="inline-tools">
+            <select id="deviceTypeFilter">
+              <option value="">全部设备</option>
+              <option value="soil_4in1">土壤四合一</option>
+              <option value="air_4in1">空气四合一</option>
+            </select>
+            <input id="deviceSearchInput" type="search" placeholder="搜索 device_code / gateway_code">
+          </div>
+        </div>
+
+        <div class="device-layout">
+          <div class="table-wrap">
+            <table class="data-table" id="deviceTable">
+              <thead>
+                <tr>
+                  <th>设备编号</th>
+                  <th>类型</th>
+                  <th>网关</th>
+                  <th>从站</th>
+                  <th>植株</th>
+                  <th>分组</th>
+                  <th>最近采集</th>
+                </tr>
+              </thead>
+              <tbody id="deviceTableBody"></tbody>
+            </table>
+          </div>
+
+          <div class="inspector">
+            <div class="inspector-head">
+              <span class="inspector-kicker">Selected Device</span>
+              <h4 id="selectedDeviceTitle">未选择设备</h4>
+            </div>
+            <div id="selectedDeviceMeta" class="inspector-grid"></div>
+            <div class="mini-metrics" id="latestMetrics"></div>
+            <div class="history-head">
+              <span>最近记录</span>
+              <button id="refreshSelectedBtn" class="text-btn" type="button">刷新所选设备</button>
+            </div>
+            <div class="mini-table-wrap">
+              <table class="mini-table">
+                <thead>
+                  <tr>
+                    <th>时间</th>
+                    <th>温度</th>
+                    <th>湿度</th>
+                    <th>pH/CO2</th>
+                    <th>EC/Lux</th>
+                  </tr>
+                </thead>
+                <tbody id="historyPreviewBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="plants" class="panel reveal">
+        <div class="panel-head">
+          <h3>植株与盆维护</h3>
+        </div>
+
+        <div class="form-grid">
+          <form id="plantForm" class="editor-card">
+            <div class="editor-head"><span>Plant</span><h4>植株录入</h4></div>
+            <div class="field-grid">
+              <label><span>植株编号</span><input name="plant_code" required placeholder="例如 test_chr_004"></label>
+              <label><span>盆编号</span><input name="pot_code" placeholder="例如 test_pot_004"></label>
+              <label><span>分组</span><select name="group_type"><option value="control">control</option><option value="stress">stress</option></select></label>
+              <label><span>处理类型</span><input name="treatment_type" placeholder="例如 heavy_metal"></label>
+              <label><span>胁迫类型</span><input name="stress_type" placeholder="例如 cadmium"></label>
+              <label><span>胁迫等级</span><input name="stress_level" placeholder="例如 level_1"></label>
+              <label><span>开始时间</span><input name="stress_started_at" placeholder="YYYY-MM-DD HH:mm:ss"></label>
+              <label class="span-2"><span>备注</span><input name="remark" placeholder="备注"></label>
+            </div>
+            <button class="primary-btn" type="submit">保存植株</button>
+          </form>
+
+          <form id="potForm" class="editor-card">
+            <div class="editor-head"><span>Pot</span><h4>盆位录入</h4></div>
+            <div class="field-grid">
+              <label><span>盆编号</span><input name="pot_code" required placeholder="例如 test_pot_004"></label>
+              <label><span>区域编号</span><input name="zone_code" placeholder="例如 zone_a"></label>
+              <label><span>位置编号</span><input name="position_code" placeholder="例如 row_01_col_02"></label>
+              <label class="span-2"><span>备注</span><input name="remark" placeholder="备注"></label>
+            </div>
+            <button class="primary-btn" type="submit">保存盆位</button>
+          </form>
+        </div>
+
+        <div class="dual-table">
+          <div class="table-card">
+            <div class="subhead"><h4>植株列表</h4><span id="plantCountLabel">0 条</span></div>
+            <div class="table-wrap compact">
+              <table class="data-table">
+                <thead><tr><th>植株</th><th>盆</th><th>分组</th><th>设备</th></tr></thead>
+                <tbody id="plantTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="table-card">
+            <div class="subhead"><h4>盆列表</h4><span id="potCountLabel">0 条</span></div>
+            <div class="table-wrap compact">
+              <table class="data-table">
+                <thead><tr><th>盆编号</th><th>区域</th><th>位置</th><th>备注</th></tr></thead>
+                <tbody id="potTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="bindings" class="panel reveal">
+        <div class="panel-head">
+          <h3>传感器绑定</h3>
+        </div>
+
+        <div class="form-grid single-side">
+          <form id="bindingForm" class="editor-card">
+            <div class="editor-head"><span>Binding</span><h4>绑定维护</h4></div>
+            <div class="field-grid">
+              <label><span>设备编号</span><input name="device_code" required placeholder="例如 test_soil_001"></label>
+              <label><span>植株编号</span><input name="plant_code" placeholder="例如 test_chr_001"></label>
+              <label><span>盆编号</span><input name="pot_code" placeholder="例如 test_pot_001"></label>
+              <label><span>绑定角色</span><select name="binding_role"><option value="primary">primary</option><option value="secondary">secondary</option></select></label>
+              <label><span>开始时间</span><input name="start_time" placeholder="YYYY-MM-DD HH:mm:ss"></label>
+              <label class="span-2"><span>备注</span><input name="remark" placeholder="备注"></label>
+            </div>
+            <button class="primary-btn" type="submit">保存绑定</button>
+          </form>
+        </div>
+
+        <div class="table-card">
+          <div class="subhead"><h4>当前生效绑定</h4><span id="bindingCountLabel">0 条</span></div>
+          <div class="table-wrap compact">
+            <table class="data-table">
+              <thead><tr><th>设备</th><th>类型</th><th>植株</th><th>盆</th><th>分组</th><th>开始时间</th></tr></thead>
+              <tbody id="bindingTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="exports" class="panel reveal">
+        <div class="panel-head">
+          <h3>数据导出</h3>
+        </div>
+        <form id="exportForm" class="editor-card export-card">
+          <div class="editor-head"><span>Dataset</span><h4>自定义导出</h4></div>
+          <div class="field-grid export-field-grid">
+            <label><span>分组</span><select name="group_type"><option value="">全部</option><option value="control">control</option><option value="stress">stress</option></select></label>
+            <label><span>植株编号</span><input name="plant_code" placeholder="例如 test_chr_001"></label>
+            <label><span>设备编号</span><input name="device_code" placeholder="例如 test_soil_001"></label>
+            <label><span>网关编号</span><input name="gateway_code" placeholder="例如 test_gw_001"></label>
+            <label><span>开始时间</span><input name="start_time" placeholder="YYYY-MM-DD HH:mm:ss"></label>
+            <label><span>结束时间</span><input name="end_time" placeholder="YYYY-MM-DD HH:mm:ss"></label>
+          </div>
+          <div class="export-actions-row">
+            <button id="btnExportCsv" class="ghost-btn" type="button">导出 CSV</button>
+            <button id="btnExportExcel" class="primary-btn" type="button">导出 Excel</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="users" class="panel reveal hidden">
+        <div class="panel-head">
+          <h3>账号与权限</h3>
+        </div>
+
+        <div class="form-grid">
+          <form id="userForm" class="editor-card">
+            <div class="editor-head"><span>Accounts</span><h4>账号管理</h4></div>
+            <div class="field-grid">
+              <label><span>用户名</span><input name="username" required placeholder="例如 editor_01"></label>
+              <label><span>显示名</span><input name="display_name" placeholder="例如 数据录入员"></label>
+              <label><span>角色</span><select name="role"><option value="viewer">viewer</option><option value="editor">editor</option><option value="admin">admin</option></select></label>
+              <label><span>状态</span><select name="is_active"><option value="1">启用</option><option value="0">停用</option></select></label>
+              <label class="span-2"><span>密码</span><input name="password" type="password" placeholder="新用户必填，老用户留空则不改密码"></label>
+            </div>
+            <button class="primary-btn" type="submit">保存账号</button>
+          </form>
+
+          <form id="passwordForm" class="editor-card">
+            <div class="editor-head"><span>Security</span><h4>修改我的密码</h4></div>
+            <div class="field-grid">
+              <label><span>当前密码</span><input name="current_password" type="password" required></label>
+              <label><span>新密码</span><input name="new_password" type="password" required></label>
+            </div>
+            <button class="primary-btn" type="submit">更新密码</button>
+          </form>
+        </div>
+
+        <div class="table-card">
+          <div class="subhead"><h4>账号列表</h4><span id="userCountLabel">0 条</span></div>
+          <p class="table-hint">管理员可在此快速启用、停用或删除账号。停用后，账号会立即退出当前登录状态。</p>
+          <div class="table-wrap compact">
+            <table class="data-table">
+              <thead><tr><th>用户名</th><th>显示名</th><th>角色</th><th>状态</th><th>最近登录</th><th>操作</th></tr></thead>
+              <tbody id="userTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <div id="toast" class="toast hidden"></div>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
