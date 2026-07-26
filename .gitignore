@@ -1,0 +1,44 @@
+# Dependencies
+**/node_modules/
+**/miniprogram_npm/
+
+# Build outputs
+**/dist/
+**/build/
+**/.gradle/
+**/.pio/
+**/.idea/
+**/.vscode/
+*.apk
+*.aab
+*.tgz
+*.zip
+
+# Runtime and private configuration
+.env
+.env.*
+!.env.example
+**/local.properties
+**/project.private.config.json
+**/data/
+**/archives/
+**/uploads/
+*.log
+*.pid
+
+# Python and operating-system files
+**/__pycache__/
+*.py[cod]
+.venv*/
+.DS_Store
+Thumbs.db
+
+# Database exports and operational records
+*.sql.gz
+*.dump
+*.bak
+*backup*.sql
+*binding*.csv
+
+# IDE/user-specific Keil state
+*.uvguix.*
