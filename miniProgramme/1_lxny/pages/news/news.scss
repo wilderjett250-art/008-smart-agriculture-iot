@@ -1,0 +1,94 @@
+.container {
+    // background: linear-gradient(to bottom, #8DB600, white);
+    padding: 16px;
+}
+
+.field-container {
+    margin-bottom: 8px;
+    background: #FFFFFF;
+    border-radius: 8px 8px;
+    // padding: 8px 16px;
+    box-shadow: 0 15rpx 40rpx rgb(0, 0, 0, 0.1);
+}
+
+.field-title {
+    background: #8DB600;
+    padding-left: 5px;
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.field-info {
+    display: flex;
+    align-items: center;
+    background: #8DB600;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.field-info2 {
+    
+    align-items: center;
+    background: #8DB600;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.field-info-view{
+    display: flex;
+    justify-content: space-between;
+}
+
+.field-info-text {
+    font-size: 16px;
+    color: #000000;
+}
+
+.history-data-link {
+    color: #0000FF;
+    font-size: 16px;
+}
+
+.data-row {
+    display: flex;
+    margin-bottom: 2px;
+}
+
+.data-cell {
+    flex: 1;
+    text-align: center;
+}
+
+.data-value {
+    color: #27AE60;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.data-unit {
+    font-size: 12px;
+    color: #555555;
+}
+
+.guide-container {
+    background: #FFFFFF;
+    border-radius: 8px;
+    margin-top: 8px;
+    padding: 8px 16px;
+}
+
+.guide-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.guide-item {
+    margin-top: 4px;
+    font-size: 14px;
+}
+
+.warning {
+    color: #f33;
+}

@@ -1,0 +1,36 @@
+<!--pages/map/marker/marker.wxml-->
+
+<view class="centered-container">
+    <view class="t_title">试验田位置
+    </view>
+</view>
+
+<view class="show-map-container">
+  <!-- 地图展示部分 -->
+  <view class="map-container">
+    <view class="map-content-show">
+			<view class="map-panel pl20 pr20" hover-class="none" hover-stop-propagation="false">
+      	<map class="map" markers="{{markers}}" latitude="{{location.latitude}}" longitude="{{location.longitude}}" scale="{{scale}}"></map>
+			</view>
+    </view>
+	</view>
+	<mp-actionsheet
+		bindactiontap="onSelectColor"
+		ext-class="color-actionsheet"
+		show="{{showColorActionsheet}}"
+		actions="{{calloutColors}}">
+	</mp-actionsheet>
+	<mp-actionsheet
+		bindactiontap="onSelectBorderColor"
+		ext-class="bordercolor-actionsheet"
+		show="{{showBorderColorActionsheet}}"
+		actions="{{calloutBorderColors}}">
+	</mp-actionsheet>
+	<mp-actionsheet
+		bindactiontap="onSelectBgColor"
+		ext-class="bgcolor-actionsheet"
+		show="{{showBgColorActionsheet}}"
+		actions="{{calloutBgColors}}">
+	</mp-actionsheet>
+</view>
+

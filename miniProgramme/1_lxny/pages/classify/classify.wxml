@@ -1,0 +1,15 @@
+<xzs_header></xzs_header>
+<!-- <button type="primary" bindtap="relay">开关</button> -->
+
+<view class="centered-container">
+    <view class="t_title">设备控制
+    
+    </view>
+    <view class="styled-container">
+        <view>
+            <text class="devicename">小程序控制功能演示设备</text>
+        </view>
+        <switch bindchange="switchChange" checked="{{switchStatus}}"></switch>
+        <!-- <text class="status">{{statusText}}</text> -->
+    </view>
+</view>

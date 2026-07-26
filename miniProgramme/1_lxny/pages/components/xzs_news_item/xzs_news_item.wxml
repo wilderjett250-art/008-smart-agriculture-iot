@@ -1,0 +1,24 @@
+<view class="nsitem">
+    <view class="pic">
+        <image class="img" src="{{myItem.picurl}}" mode="aspectFill"></image>
+    </view>
+    <view class="text">
+        <view class="title">
+            {{myItem.title}}
+        </view>
+        <view class="info">
+            <view class="block">
+                <van-icon name="clock-o" size="14" class="van-icons"/>
+                <text>{{myItem.publish_date}}</text>
+            </view>
+            <view class="block">
+                <van-icon name="eye-o" size="14" class="van-icons"/>
+                <text>{{myItem.view_count}}</text>
+            </view>
+            <view class="block">
+                <van-icon name="user-o" size="14" class="van-icons"/>
+                <text>{{myItem.author}}</text>
+            </view>
+        </view>
+    </view>
+</view>

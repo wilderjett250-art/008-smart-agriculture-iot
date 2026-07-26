@@ -1,0 +1,25 @@
+/* pages/classify/classify.wxss */
+
+.centered-container{
+    width: 690rpx;
+    margin: 30rpx;
+    box-shadow: 0 15rpx 40rpx rgb(0, 0, 0, 0.1);
+    padding: 30rpx;
+    box-sizing: border-box;
+}
+.styled-container {
+    display: flex;
+    margin-top: 20px; /* Adjust the spacing between text and switch */
+    padding: 10px;
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Rounded corners */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.t_title{
+    font-size: 50rpx;
+    text-align: center;
+    color: #3c3c3c;
+    padding: 60rpx 0 30rpx;
+}

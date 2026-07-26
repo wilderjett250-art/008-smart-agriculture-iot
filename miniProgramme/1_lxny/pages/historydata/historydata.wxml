@@ -1,0 +1,13 @@
+<view class="out">
+<view class="row" wx:for="{{listArr}}" wx:key="item">
+    <view class="username">
+        传感器类型：{{item.SENSORTYPE}}
+    </view>
+    <view class="r_data">
+        数据：{{item.VALUE}}
+    </view>
+    <view class="time">
+        时间：{{item.TIME}}
+    </view>
+</view>
+</view>

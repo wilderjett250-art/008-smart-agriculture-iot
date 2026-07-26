@@ -1,0 +1,11 @@
+<view class="footer">
+    <view class="row">智慧农业</view>
+    <view class="row">更专业的农业监测系统</view>
+    <view class="row">！！！</view>
+</view>
+
+<view class="kefu">
+    <button class="btn" open-type="contact"></button>
+    <image src="/static/images/kefu.png" mode="aspectFill" class="pic"/>
+    <view class="line"></view>
+</view>

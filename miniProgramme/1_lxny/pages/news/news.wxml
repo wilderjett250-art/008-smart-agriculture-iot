@@ -1,0 +1,152 @@
+<xzs_header></xzs_header>
+<view class="container">
+
+    <!-- 试验田一的数据展示 -->
+    <view class="field-container">
+        <view class="field-title">
+            <text class="field-title-text">试验田一</text>
+        </view>
+        <view class="field-info2" refreshTime1="refreshTime1">
+            <view class="field-info-view">
+                <text class="field-info-text">更新时间：</text>
+                <navigator url="/pages/historydata/historydata" open-type="reLaunch">
+                    <text class="field-info-text history-data-link">→历史数据</text>
+                </navigator>
+            </view>
+            <view>
+                <text class="field-info-text">{{refreshTime1}}</text>
+            </view>
+        </view>
+        <view class="field-data">
+            <!-- 第一行数据 -->
+            <view class="data-row">
+                <view class="data-cell" temperature1="{{temperature1}}">
+                    <view class="data-value">{{temperature1}}</view>
+                    <view class="data-unit">温度(℃)</view>
+                </view>
+                <view class="data-cell">
+                    <view class="data-value">{{ humidity1 }}</view>
+                    <view class="data-unit">湿度(%rh)</view>
+                </view>
+                <view class="data-cell">
+                    <view class="data-value">{{ co2_1 }}</view>
+                    <view class="data-unit">CO₂(ppm)</view>
+                </view>
+            </view>
+            <!-- 第二行数据 -->
+            <view class="data-row">
+                <view class="data-cell">
+                    <view class="data-value">{{ formaldehyde1 }}</view>
+                    <view class="data-unit">甲醛(mg/m³)</view>
+                </view>
+                <view class="data-cell">
+                    <view class="data-value">{{ soil_moisture1 }}</view>
+                    <view class="data-unit">土壤湿度(%rh)</view>
+                </view>
+                <view class="data-cell">
+                    <view class="data-value">{{ illumination1 }}</view>
+                    <view class="data-unit">光照(lx)</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 试验田二的数据展示 -->
+    <view class="field-container">
+        <view class="field-title">
+            <text class="field-title-text">试验田二</text>
+        </view>
+        <view class="field-info2" refreshTime2="refreshTime2">
+            <view class="field-info-view">
+                <text class="field-info-text">更新时间：</text>
+                <text class="field-info-text history-data-link">→历史数据</text>
+            </view>
+            <view>
+                <!-- <text class="field-info-text">{{refreshTime2}}</text> -->
+                <text class="field-info-text">2025-04-13 22:02:18</text>
+            </view>
+        </view>
+        <view class="field-data">
+            <!-- 第一行数据 -->
+            <!-- <view class="data-row">
+                <view class="data-cell">
+                    <text class="data-value">{{ temperature2 }}</text>
+                    <text class="data-unit">温度(℃)</text>
+                </view>
+                <view class="data-cell">
+                    <text class="data-value">{{ humidity2 }}</text>
+                    <text class="data-unit">湿度(%rh)</text>
+                </view>
+                <view class="data-cell">
+                    <text class="data-value">{{ co2_2 }}</text>
+                    <text class="data-unit">CO₂(ppm)</text>
+                </view>
+            </view> -->
+            <!-- 第二行数据 -->
+            <!-- <view class="data-row">
+                <view class="data-cell">
+                    <text class="data-value">{{ formaldehyde2 }}</text>
+                    <text class="data-unit">甲醛(mg/m³)</text>
+                </view>
+                <view class="data-cell">
+                    <text class="data-value">{{ soil_moisture2 }}</text>
+                    <text class="data-unit">土壤湿度(%rh)</text>
+                </view>
+                <view class="data-cell">
+                    <text class="data-value">{{ illumination2 }}</text>
+                    <text class="data-unit">光照(lx)</text>
+                </view>
+            </view> -->
+            <view class="data-row">
+                <view class="data-cell">
+                    <text class="data-value">30.2</text>
+                    <view class="data-unit">温度(℃)</view>
+                </view>
+                <view class="data-cell">
+                    <text class="data-value">67</text>
+                    <view class="data-unit">湿度(%rh)</view>
+                </view>
+                <view class="data-cell">
+                    <text class="data-value">562</text>
+                    <view class="data-unit">CO₂(ppm)</view>
+                </view>
+            </view>
+            <view class="data-row">
+                <view class="data-cell">
+                    <text class="data-value">4</text>
+                    <view class="data-unit">甲醛(mg/m³)</view>
+                </view>
+                <view class="data-cell">
+                    <text class="data-value">99.05</text>
+                    <view class="data-unit">土壤湿度(%rh)</view>
+                </view>
+                <view class="data-cell">
+                    <text class="data-value">1345</text>
+                    <view class="data-unit">光照(lx)</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="guide-container" wx:if="{{showGuide}}">
+        <view class="guide-title">种植建议：</view>
+        <view class="guide-item">
+            <text class="guide-item-text">温度：当前大棚温度正常。</text>
+        </view>
+        <view class="guide-item">
+            <text class="guide-item-text">湿度：当前大棚湿度正常。</text>
+        </view>
+        <view class="guide-item">
+            <text class="guide-item-text">CO2：当前大棚CO2浓度正常。</text>
+        </view>
+        <view class="guide-item">
+            <text class="guide-item-text">甲醛：当前大棚甲醛含量正常。</text>
+        </view>
+        <view class="guide-item warning">
+            <text class="guide-item-text">土壤：当前大棚两块试验田土壤湿度过高，请打开风机！</text>
+        </view>
+        <view class="guide-item">
+            <text class="guide-item-text">光照：当前大棚光照强度正常。</text>
+        </view>
+    </view>
+</view>

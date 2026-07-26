@@ -1,0 +1,88 @@
+<xzs_header></xzs_header>
+<view class="banner">
+    <swiper
+    previous-margin="30rpx"
+    circular
+    autoplay
+    interval="3000"
+    indicator-dots
+    indicator-active-color="var(--themeColor)"
+    indicator-color="rgb(255, 255, 255, 0.3)"
+    >
+        <swiper-item>
+            <image src="https://www.zafu.edu.cn/__local/2/EC/AA/CD3F7ECF18DA34DA70E175A9DE5_567708FA_26127.jpg"></image>
+        </swiper-item>
+        <swiper-item>
+            <image src="https://www.zafu.edu.cn/__local/C/59/DF/B9F6AC17CDA9C74CE25AB65FEFF_5F1DBE9C_1A9E6.jpeg"></image>
+        </swiper-item>
+        <swiper-item>
+            <image src="https://www.espressif.com.cn/sites/default/files/banner/home-devcon-banner.png"></image>
+        </swiper-item>
+        <swiper-item>
+            <image src="https://www.espressif.com.cn/sites/default/files/banner/esp-now-banner-mobile.png"></image>
+        </swiper-item>
+    </swiper>
+</view>
+
+<view class="scrollNav">
+    <scroll-view scroll-x>
+        <navigator url="/pages/classify/classify" open-type="reLaunch" class="item">
+            <view class="pic">
+                <image src="https://mp-c1d562f4-9dee-47f5-94e1-353319ac3ff6.cdn.bspapp.com/button.png"></image>
+            </view>
+            <view class="text">
+                设备控制
+            </view>
+        </navigator>
+        <navigator url="/pages/news/news" open-type="reLaunch" class="item">
+            <view class="pic">
+                <image src="https://mp-c1d562f4-9dee-47f5-94e1-353319ac3ff6.cdn.bspapp.com/evn.png"></image>
+            </view>
+            <view class="text">
+                实时数据
+            </view>
+        </navigator>
+        <navigator url="/pages/historydata/historydata" class="item">
+            <view class="pic">
+                <image src="https://mp-c1d562f4-9dee-47f5-94e1-353319ac3ff6.cdn.bspapp.com/data.png"></image>
+            </view>
+            <view class="text">
+                历史数据
+            </view>
+        </navigator>
+        <navigator url="/pages/location/location" class="item">
+            <view class="pic">
+                <image src="https://mp-c1d562f4-9dee-47f5-94e1-353319ac3ff6.cdn.bspapp.com/local.png"></image>
+            </view>
+            <view class="text">
+                位置信息
+            </view>
+        </navigator>
+    </scroll-view>
+</view>
+
+<view class="about">
+    <view class="pubTitle">
+        <view class="en">introduce</view>
+        <view class="cn">智慧农业简介</view>
+        <view class="line"></view>
+    </view>
+    <view class="content">
+        <view class="row">
+            欢迎使用智慧农业系统，为现代化农场带来全新的智能管理体验。我们利用物联网技术，为农场主打造智慧化现代化一体化农场，实现环境监控、数据实时分析和个性化管理。
+        </view>
+        <view class="row">
+            功能概述。我们深入研究并创新物联网技术在农场中的运用，提出基于物联网技术的组合检测系统。系统重点关注以下功能：1.实时监控环境因素： 通过监测环境温度、湿度、土壤湿度、CO2浓度、甲醛浓度等关键因素，实现农场内环境的实时监控和数据采集。2.多终端访问： 我们提供Web端和手机APP，让您可以随时随地查看农场数据，实现多地登录和多种需求。3.云端支持： 系统建立在云端平台上，实现数据的云储存和及时传输，确保数据安全可靠。
+        </view>
+        <view class="row">
+            技术特点。本系统基于STM32开发板，由传感器模块、云端数据库和软件平台构成，具备以下技术特点：1.实时性与稳定性： 系统实时监测环境数据，保证农场作物生长环境的稳定性。2.数据云特性： 数据在云端储存和传输，随时随地获取历史数据和趋势分析。3.多样性与可移植性： 系统适用于不同农场，硬件接口和软件平台支持个性化定制，轻松应对各种应用场景。
+        </view>
+        <view class="row">
+            智慧农业系统致力于为您的农场创造更智能、高效的管理方式，为现代农业发展贡献一份科技力量。开始使用我们的系统，体验更智能的农业管理吧！
+        </view>
+    </view>
+</view>
+
+
+
+<xzs_footer></xzs_footer>

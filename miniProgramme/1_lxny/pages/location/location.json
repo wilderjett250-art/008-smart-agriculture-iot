@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "tab": "../../pages/components/tab/tab",
+        "mp-actionsheet": "../../pages/components/actionsheet/actionsheet"
+    }
+}
